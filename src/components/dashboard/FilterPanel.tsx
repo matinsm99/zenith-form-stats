@@ -36,16 +36,16 @@ const FilterPanel = ({ filters, onFiltersChange }: FilterPanelProps) => {
   const clearFilters = () => {
     onFiltersChange({
       dateRange: "7d",
-      country: "",
-      device: "",
-      utmSource: "",
-      utmMedium: "",
-      utmCampaign: ""
+      country: "all",
+      device: "all",
+      utmSource: "all",
+      utmMedium: "all",
+      utmCampaign: "all"
     });
   };
 
   const activeFilterCount = Object.values(filters).filter(value => 
-    value && value !== "7d"
+    value && value !== "7d" && value !== "all"
   ).length;
 
   return (
@@ -105,7 +105,7 @@ const FilterPanel = ({ filters, onFiltersChange }: FilterPanelProps) => {
                 <SelectValue placeholder="All countries" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All countries</SelectItem>
+                <SelectItem value="all">All countries</SelectItem>
                 {uniqueCountries.map(country => (
                   <SelectItem key={country} value={country}>{country}</SelectItem>
                 ))}
@@ -124,7 +124,7 @@ const FilterPanel = ({ filters, onFiltersChange }: FilterPanelProps) => {
                 <SelectValue placeholder="All devices" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All devices</SelectItem>
+                <SelectItem value="all">All devices</SelectItem>
                 {uniqueDevices.map(device => (
                   <SelectItem key={device} value={device}>{device}</SelectItem>
                 ))}
@@ -143,7 +143,7 @@ const FilterPanel = ({ filters, onFiltersChange }: FilterPanelProps) => {
                 <SelectValue placeholder="All sources" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All sources</SelectItem>
+                <SelectItem value="all">All sources</SelectItem>
                 {uniqueSources.map(source => (
                   <SelectItem key={source} value={source}>{source}</SelectItem>
                 ))}
@@ -162,7 +162,7 @@ const FilterPanel = ({ filters, onFiltersChange }: FilterPanelProps) => {
                 <SelectValue placeholder="All mediums" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All mediums</SelectItem>
+                <SelectItem value="all">All mediums</SelectItem>
                 {uniqueMediums.map(medium => (
                   <SelectItem key={medium} value={medium}>{medium}</SelectItem>
                 ))}
@@ -181,7 +181,7 @@ const FilterPanel = ({ filters, onFiltersChange }: FilterPanelProps) => {
                 <SelectValue placeholder="All campaigns" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All campaigns</SelectItem>
+                <SelectItem value="all">All campaigns</SelectItem>
                 {uniqueCampaigns.map(campaign => (
                   <SelectItem key={campaign} value={campaign}>{campaign}</SelectItem>
                 ))}
@@ -195,48 +195,48 @@ const FilterPanel = ({ filters, onFiltersChange }: FilterPanelProps) => {
           <div className="pt-4 border-t">
             <div className="flex flex-wrap gap-2">
               <span className="text-sm font-medium text-muted-foreground">Active filters:</span>
-              {filters.country && (
+              {filters.country && filters.country !== "all" && (
                 <Badge variant="secondary" className="flex items-center gap-1">
                   Country: {filters.country}
                   <X 
                     className="h-3 w-3 cursor-pointer hover:text-foreground" 
-                    onClick={() => updateFilter('country', '')}
+                    onClick={() => updateFilter('country', 'all')}
                   />
                 </Badge>
               )}
-              {filters.device && (
+              {filters.device && filters.device !== "all" && (
                 <Badge variant="secondary" className="flex items-center gap-1">
                   Device: {filters.device}
                   <X 
                     className="h-3 w-3 cursor-pointer hover:text-foreground" 
-                    onClick={() => updateFilter('device', '')}
+                    onClick={() => updateFilter('device', 'all')}
                   />
                 </Badge>
               )}
-              {filters.utmSource && (
+              {filters.utmSource && filters.utmSource !== "all" && (
                 <Badge variant="secondary" className="flex items-center gap-1">
                   Source: {filters.utmSource}
                   <X 
                     className="h-3 w-3 cursor-pointer hover:text-foreground" 
-                    onClick={() => updateFilter('utmSource', '')}
+                    onClick={() => updateFilter('utmSource', 'all')}
                   />
                 </Badge>
               )}
-              {filters.utmMedium && (
+              {filters.utmMedium && filters.utmMedium !== "all" && (
                 <Badge variant="secondary" className="flex items-center gap-1">
                   Medium: {filters.utmMedium}
                   <X 
                     className="h-3 w-3 cursor-pointer hover:text-foreground" 
-                    onClick={() => updateFilter('utmMedium', '')}
+                    onClick={() => updateFilter('utmMedium', 'all')}
                   />
                 </Badge>
               )}
-              {filters.utmCampaign && (
+              {filters.utmCampaign && filters.utmCampaign !== "all" && (
                 <Badge variant="secondary" className="flex items-center gap-1">
                   Campaign: {filters.utmCampaign}
                   <X 
                     className="h-3 w-3 cursor-pointer hover:text-foreground" 
-                    onClick={() => updateFilter('utmCampaign', '')}
+                    onClick={() => updateFilter('utmCampaign', 'all')}
                   />
                 </Badge>
               )}

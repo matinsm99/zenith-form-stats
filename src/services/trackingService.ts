@@ -92,24 +92,24 @@ class TrackingService {
       filtered = filtered.filter(item => item.timestamp >= cutoff);
     }
 
-    // Other filters
-    if (filters.country) {
+    // Other filters - handle "all" values
+    if (filters.country && filters.country !== "all") {
       filtered = filtered.filter(item => item.country === filters.country);
     }
 
-    if (filters.device) {
+    if (filters.device && filters.device !== "all") {
       filtered = filtered.filter(item => item.device_type === filters.device);
     }
 
-    if (filters.utmSource) {
+    if (filters.utmSource && filters.utmSource !== "all") {
       filtered = filtered.filter(item => item.utm_source === filters.utmSource);
     }
 
-    if (filters.utmMedium) {
+    if (filters.utmMedium && filters.utmMedium !== "all") {
       filtered = filtered.filter(item => item.utm_medium === filters.utmMedium);
     }
 
-    if (filters.utmCampaign) {
+    if (filters.utmCampaign && filters.utmCampaign !== "all") {
       filtered = filtered.filter(item => item.utm_campaign === filters.utmCampaign);
     }
 

@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { Download, Eye, Filter, Search, Globe, Smartphone, Monitor, TrendingUp, Users, MousePointer } from "lucide-react";
 import TrackingScript from "@/components/tracking/TrackingScript";
 import FormIntegration from "@/components/tracking/FormIntegration";
@@ -20,11 +19,11 @@ const Index = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [filters, setFilters] = useState({
     dateRange: "7d",
-    country: "",
-    device: "",
-    utmSource: "",
-    utmMedium: "",
-    utmCampaign: ""
+    country: "all",
+    device: "all",
+    utmSource: "all",
+    utmMedium: "all",
+    utmCampaign: "all"
   });
 
   useEffect(() => {
